@@ -1,0 +1,54 @@
+{
+  "root": true,
+  "parser": "babel-eslint",
+  "plugins": [
+    "extra-rules",
+    "import",
+    "lodash",
+    "react"
+  ],
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "jest": true,
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "generators": true,
+      "experimentalObjectRestSpread": true
+    }
+  },
+  "rules": {
+    "constructor-super": "error",
+    "extra-rules/no-commented-out-code": "off",
+    "lodash/import-scope": "error",
+    "lodash/prefer-get": "error",
+    "no-var": "error",
+    "prefer-arrow-callback": "error",
+    "prefer-const": "error",
+    "react/boolean-prop-naming": "error",
+    "react/default-props-match-prop-types": "error",
+    "react/no-danger": "error",
+    "react/no-string-refs": "error",
+    "react/no-set-state": "error",
+    "react/no-unused-prop-types": "error",
+    "react/prop-types": [
+      "error",
+      {
+        "ignore": [
+          "id",
+          "children",
+          "className",
+          "key",
+          "row"
+        ]
+      }
+    ],
+    "react/require-default-props": "error"
+  }
+}

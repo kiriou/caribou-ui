@@ -1,0 +1,92 @@
+/* stylelint-disable */
+/* :import('./utilities.css') {
+  i_color_background_error: color_background_error;
+  i_color_background_info: color_background_info;
+  i_color_background_success: color_background_success;
+  i_color_background_warning: color_background_warning;
+} */
+:root {
+  --bg-color-error: #f2dede;
+  --bg-color-info: #d9edf7;
+  --bg-color-success: #dff0d8;
+  --bg-color-warning: #fcf8e3;
+
+  --border-color-error: #ebcccc;
+  --border-color-warning: #faf2cc;
+  --border-color-info: #bcdff1;
+  --border-color-success: #d0e9c6;
+
+  --text-color-error: #a94442;
+  --text-color-warning: #8a6d3b;
+  --text-color-info: #31708f;
+  --text-color-success: #3c763d;
+}
+/* stylelint-enable */
+
+body {
+  font-size: 14px;
+  font-family: 'Verdana';
+  padding: 2rem;
+}
+
+.header {
+    display: flex;
+}
+
+.menu {
+    margin-right: 1rem;
+    padding-top: 0.4rem;
+}
+
+.footer {
+    font-style: italic;
+    text-align: center;
+    font-size: small;
+}
+
+.row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.btn {
+    margin: 5px;
+}
+
+div h3 {
+    margin-top: 7px;
+    margin-bottom: 15px;
+}
+
+td form div div {
+    margin-top: 5px;
+}
+
+.closedToInput {
+    margin-top: 0px !important;
+    margin-left: -32px !important;
+    border-bottom-left-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+}
+
+.form-group {
+    margin-bottom: 0.5rem;
+}
+
+.col-form-label {
+    text-align: right;
+}
+
+select:not([multiple]) { 
+    height: calc(2.25rem + 2px);
+}
+
+#ledgerSelect {
+    margin-bottom: 10px;
+}
+
+.react-datepicker__input-container input {
+    border-radius: .25rem;
+    border: 1px solid #ccc;
+    padding: .375rem .75rem;
+}

@@ -1,0 +1,13 @@
+/* stylelint-disable */
+:export {
+  color-white: #FFFFFF;
+  color-white-green: #F3F5F5;
+  color-green: #B2CACA;
+  color-green-half-dark: #5E9696;
+  color-green-dark: #0A7272;
+  color-background-error: #a94442;
+  color-background-info: #a94442;
+  color-background-success: #a94442;
+  color-background-warning: #a94442;
+}
+/* stylelint-enable */

@@ -1,0 +1,14 @@
+.user-form__button-group {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.userInformations__title div {
+  width: 10rem !important;
+  margin-left: 1rem !important;
+}
+
+.userInformations__title div input {
+  padding-left: 1rem !important;
+}

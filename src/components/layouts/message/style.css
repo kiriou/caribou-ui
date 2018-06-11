@@ -1,0 +1,57 @@
+/* stylelint-disable */
+:root {
+  --bg-color-global: #F3F5F5;
+  --bg-color-error: #f2dede;
+  --bg-color-info: #d9edf7;
+  --bg-color-success: #dff0d8;
+  --bg-color-warning: #fcf8e3;
+
+  --border-color-error: #ebcccc;
+  --border-color-warning: #faf2cc;
+  --border-color-info: #bcdff1;
+  --border-color-success: #d0e9c6;
+
+  --text-color-global: #0A7272;
+  --text-color-error: #a94442;
+  --text-color-warning: #8a6d3b;
+  --text-color-info: #31708f;
+  --text-color-success: #3c763d;
+}
+/* stylelint-enable */
+
+.message {
+  border: 2px;
+  border-style: solid;
+  border-radius: 5px;
+  margin: 1em 0;
+  padding: 1em;
+  text-align: center;
+}
+
+.message i {
+  margin-right: 1em;
+}
+
+.error {
+  background-color: var(--bg-color-error);
+  border-color: var(--border-color-error);
+  color: var(--text-color-error);
+}
+
+.info {
+  background-color: var(--bg-color-info);
+  border-color: var(--border-color-info);
+  color: var(--text-color-info);
+}
+
+.success {
+  background-color: var(--bg-color-success);
+  border-color: var(--border-color-success);
+  color: var(--text-color-success);
+}
+
+.warning {
+  background-color: var(--bg-color-warning);
+  border-color: var(--border-color-warning);
+  color: var(--text-color-warning);
+}

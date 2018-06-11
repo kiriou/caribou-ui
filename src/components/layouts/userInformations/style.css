@@ -1,0 +1,15 @@
+.userInformations{
+  width: 30%;
+}
+
+.userInformations__title{
+  display: flex;
+}
+
+.userInformations__title i{
+  margin-top: 0.25em;
+}
+
+.userInformations__title h1{
+  margin-left: 0.5em;
+}

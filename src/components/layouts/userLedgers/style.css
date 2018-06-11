@@ -1,0 +1,14 @@
+.user-ledgers {
+  border-left-style: solid;
+  padding-left: 1em;
+  width: 40%;
+}
+
+.user-ledgers__button-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-ledgers__button-list > div {
+  margin: 1rem;
+}
