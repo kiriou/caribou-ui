@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
 import ContentSave from 'material-ui/svg-icons/content/save';
+import Delete from 'material-ui/svg-icons/action/delete';
 
 import './style.css';
 
@@ -46,6 +47,7 @@ const LedgerForm = (props) => {
 
       <div className="ledger-form__button-group">
         <FlatButton label="Save" primary icon={<ContentSave />} onClick={() => submitForm(form)} />
+        <FlatButton label="Delete" secondary icon={<Delete />} onClick={() => submitForm(form)} />
       </div>
     </div>
   );

@@ -14,6 +14,14 @@
   margin: 1rem;
 }
 
+.user-ledgers__button-list > div > button,
+.user-ledgers__button-list > div > button div,
+.user-ledgers__button-list > div > button:hover {
+  text-align: left !important;
+  height: 5rem !important;
+  line-height: 5rem !important;
+}
+
 .user-ledgers__content {
   display: flex;
   flex-wrap: wrap;
