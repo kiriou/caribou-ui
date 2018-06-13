@@ -28,8 +28,13 @@ const LedgerForm = (props) => {
     formUpdate(event.target.name, event.target.value);
   };
 
+  const title = name !== '' ? name : 'New ledger';
+
   return (
     <div className="ledger-form">
+      <div>
+        <h1>{title}</h1>
+      </div>
       <TextField
         id="ledger-form__name"
         name="name"
