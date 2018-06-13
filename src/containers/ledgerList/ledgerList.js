@@ -21,7 +21,7 @@ const propTypes = {
   deleteLedgerRequest: PropTypes.func.isRequired,
   currentEdited: PropTypes.number.isRequired,
   switchDisplayNameField: PropTypes.func.isRequired,
-  switchToCreate: PropTypes.func.isRequired,
+  switchToCreate: PropTypes.func,
   isCreation: PropTypes.bool.isRequired,
 };
 

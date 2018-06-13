@@ -52,7 +52,6 @@ export default (state = initialState(), action) => {
     case actionTypes.LEDGER_SWITCH_CREATION:
       return {
         ...state,
-        currentEdited: -1,
         isCreation: true,
       };
 

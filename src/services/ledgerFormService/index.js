@@ -7,9 +7,18 @@ import { updateUser } from '../userService/actions';
 import { validateFields, validateForm } from './helper';
 
 export function* watchInitForm(action) {
-  const form = {
-    name: action.ledger.name,
-  };
+  let form = null;
+
+  if(action.ledger) {
+    form = {
+      name: action.ledger.name,
+    };
+  }
+  else {
+    form = {
+      name: '',
+    };
+  }
 
   yield put(actions.initFormDone(form));
 }

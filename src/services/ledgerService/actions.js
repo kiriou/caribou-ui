@@ -101,7 +101,7 @@ export function switchDisplayNameField(ledgerIndex) {
   };
 }
 
-export function switchToCreate() {
+export function addLedger() {
   return {
     type: actionTypes.LEDGER_SWITCH_CREATION,
   };

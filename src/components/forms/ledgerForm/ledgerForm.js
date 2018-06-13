@@ -5,6 +5,8 @@ import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
 import ContentSave from 'material-ui/svg-icons/content/save';
 
+import './style.css';
+
 const propTypes = {
   form: PropTypes.shape({
     name: PropTypes.string.isRequired,
