@@ -20,7 +20,6 @@ const propTypes = {
   ledgers: PropTypes.array.isRequired,
   deleteLedgerRequest: PropTypes.func.isRequired,
   currentEdited: PropTypes.number.isRequired,
-  switchDisplayNameField: PropTypes.func.isRequired,
   switchToCreate: PropTypes.func,
   isCreation: PropTypes.bool.isRequired,
 };
@@ -46,9 +45,6 @@ class LedgerList extends Component {
           <TableRowColumn>{ledger.name}</TableRowColumn>
         }
         <TableRowColumn>
-          <IconButton onClick={() => this.props.switchDisplayNameField(this.props.ledgers.indexOf(ledger))}>
-            <ModeEdit />
-          </IconButton>
           <IconButton onClick={() => this.props.deleteLedgerRequest(ledger._id, this.deleteSuccessCallback, this.deleteErrorCallback)}>
             <ActionDelete />
           </IconButton>

@@ -18,8 +18,7 @@ export const LEDGER_DELETE_REQUEST = 'LEDGER_DELETE_REQUEST';
 export const LEDGER_DELETE_SUCCESS = 'LEDGER_DELETE_SUCCESS';
 export const LEDGER_DELETE_FAILURE = 'LEDGER_DELETE_FAILURE';
 
-// Switch name field.
-export const LEDGER_SWITCH_NAME_FIELD = 'LEDGER_SWITCH_NAME_FIELD';
+// Switch to create.
 export const LEDGER_SWITCH_CREATION = 'LEDGER_SWITCH_CREATION';
 
 // Select a ledger.

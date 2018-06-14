@@ -5,6 +5,7 @@ import * as actions from './actions';
 import { updateUser } from '../userService/actions';
 
 import { validateFields, validateForm } from './helper';
+import { createLedgerRequest, updateLedgerRequest } from '../ledgerService/actions';
 
 export function* watchInitForm(action) {
   let form = null;
@@ -33,8 +34,14 @@ export function* watchUpdate(action) {
 }
 
 export function* watchFormSubmit(action) {
+  const {isCreation} = (yield select()).ledgerServiceReducer;
   if(validateForm(action.form)){
-    yield put(updateUser(action.form));
+    if(isCreation) {
+      yield put(createLedgerRequest());
+    }
+    else {
+      yield put(updateLedgerRequest());
+    }
   }
 }
 

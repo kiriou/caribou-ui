@@ -20,84 +20,62 @@ export function getLedgerListFailure(error) {
   };
 }
 
-export function createLedgerRequest(newLedger, successCallback, errorCallBack) {
+export function createLedgerRequest() {
   return {
     type: actionTypes.LEDGER_CREATE_REQUEST,
-    newLedger,
-    successCallback,
-    errorCallBack,
   };
 }
 
-export function createLedgerSuccess(ledger, successCallback) {
+export function createLedgerSuccess() {
   return {
     type: actionTypes.LEDGER_CREATE_SUCCESS,
-    ledger,
-    successCallback,
   };
 }
 
-export function createLedgerFailure(error, errorCallback) {
+export function createLedgerFailure(error) {
   return {
     type: actionTypes.LEDGER_CREATE_FAILURE,
     error,
-    errorCallback,
   };
 }
 
-export function updateLedgerRequest(updatedLedger, successCallback, errorCallBack) {
+export function updateLedgerRequest() {
   return {
     type: actionTypes.LEDGER_UPDATE_REQUEST,
-    updatedLedger,
-    successCallback,
-    errorCallBack,
   };
 }
 
-export function updateLedgerSuccess(savedLedger, successCallback) {
+export function updateLedgerSuccess(savedLedger) {
   return {
     type: actionTypes.LEDGER_UPDATE_SUCCESS,
     savedLedger,
-    successCallback,
   };
 }
 
-export function updateLedgerFailure(error, errorCallback) {
+export function updateLedgerFailure(error) {
   return {
     type: actionTypes.LEDGER_UPDATE_FAILURE,
     error,
-    errorCallback,
   };
 }
 
-export function deleteLedgerRequest(ledgerId, successCallback, errorCallBack) {
+export function deleteLedgerRequest() {
   return {
     type: actionTypes.LEDGER_DELETE_REQUEST,
-    ledgerId,
-    successCallback,
-    errorCallBack,
   };
 }
 
-export function deleteLedgerSuccess(successCallback) {
+export function deleteLedgerSuccess(ledgerId) {
   return {
     type: actionTypes.LEDGER_DELETE_SUCCESS,
-    successCallback,
+    ledgerId,
   };
 }
 
-export function deleteLedgerFailure(error, errorCallback) {
+export function deleteLedgerFailure(error) {
   return {
     type: actionTypes.LEDGER_DELETE_FAILURE,
     error,
-    errorCallback,
-  };
-}
-
-export function switchDisplayNameField(ledgerIndex) {
-  return {
-    type: actionTypes.LEDGER_SWITCH_NAME_FIELD,
-    ledgerIndex,
   };
 }
 

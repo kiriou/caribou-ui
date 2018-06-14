@@ -18,10 +18,11 @@ const propTypes = {
 
   formUpdate: PropTypes.func.isRequired,
   submitForm: PropTypes.func.isRequired,
+  deleteLedger: PropTypes.func.isRequired,
 };
 
 const LedgerForm = (props) => {
-  const { form, formErrors, formUpdate, submitForm } = props;
+  const { form, formErrors, formUpdate, submitForm, deleteLedger } = props;
 
   const { name } = form;
 
@@ -47,7 +48,7 @@ const LedgerForm = (props) => {
 
       <div className="ledger-form__button-group">
         <FlatButton label="Save" primary icon={<ContentSave />} onClick={() => submitForm(form)} />
-        <FlatButton label="Delete" secondary icon={<Delete />} onClick={() => submitForm(form)} />
+        <FlatButton label="Delete" secondary icon={<Delete />} onClick={deleteLedger} />
       </div>
     </div>
   );

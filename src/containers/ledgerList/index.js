@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { getLedgerListRequest, deleteLedgerRequest, switchDisplayNameField } from '../../services/ledgerService/actions';
+import { getLedgerListRequest, deleteLedgerRequest } from '../../services/ledgerService/actions';
 import LedgerList from './ledgerList';
 
 function mapStateToProps(state) {
@@ -12,4 +12,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps, { getLedgerListRequest, deleteLedgerRequest, switchDisplayNameField })(LedgerList);
+export default connect(mapStateToProps, { getLedgerListRequest, deleteLedgerRequest })(LedgerList);

@@ -1,5 +1,4 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
-import { push } from 'react-router-redux';
+import { call, put, takeLatest, select } from 'redux-saga/effects';
 import axios from 'axios';
 
 import * as actionTypes from './actionTypes';
@@ -8,28 +7,28 @@ import * as actions from './actions';
 
 export function* watchGetLedgerListRequest() {
   try {
-    // const response = yield call(axios.get, `${ROOT_URL}${LEDGER_URL_EXT}`);
+    const response = yield call(axios.get, `${ROOT_URL}${LEDGER_URL_EXT}`);
 
     // BEGIN MOCK
-    const response = {
-      data: [
-        {
-          _id: '1234',
-          name: 'Voyage Norvège',
-        },
-        {
-          _id: '5678',
-          name: 'Vie quotidienne Malakoff',
-        },
-        {
-          _id: '9101',
-          name: 'Vie quotidienne Montréal',
-        },
-      ],
-    };
+    // const response = {
+    //   data: [
+    //     {
+    //       _id: '1234',
+    //       name: 'Voyage Norvège',
+    //     },
+    //     {
+    //       _id: '5678',
+    //       name: 'Vie quotidienne Malakoff',
+    //     },
+    //     {
+    //       _id: '9101',
+    //       name: 'Vie quotidienne Montréal',
+    //     },
+    //   ],
+    // };
     // END MOCK
 
-    yield put(actions.getLedgerListSuccess(response.data));
+    yield put(actions.getLedgerListSuccess(response.data.data));
   } catch (e) {
     yield put(actions.getLedgerListFailure(e.message));
   }
@@ -37,8 +36,8 @@ export function* watchGetLedgerListRequest() {
 
 export function* watchCreateLedgerRequest(action) {
   try {
-    const ledger = action.newLedger;
-    const response = yield call(axios.post, `${ROOT_URL}${LEDGER_URL_EXT}`, ledger);
+    const { form } = (yield select()).ledgerFormServiceReducer;
+    yield call(axios.post, `${ROOT_URL}${LEDGER_URL_EXT}`, form);
 
     // BEGIN MOCK
     // const response = {
@@ -49,17 +48,19 @@ export function* watchCreateLedgerRequest(action) {
     // };
     // END MOCK
 
-    yield put(actions.createLedgerSuccess(response.data, action.successCallback));
-    yield put(push('/ledgers'));
+    yield put(actions.getLedgerListRequest());
+    yield put(actions.createLedgerSuccess());
   } catch (e) {
-    yield put(actions.createLedgerFailure(e.message, action.errorCallBack));
+    yield put(actions.createLedgerFailure(e.message));
   }
 }
 
 export function* watchUpdateLedgerRequest(action) {
   try {
-    const ledger = action.updatedLedger;
-    const response = yield call(axios.put, `${ROOT_URL}${LEDGER_URL_EXT}${ledger._id}`, ledger);
+    const { form } = (yield select()).ledgerFormServiceReducer;
+    const { selectedLedger } = (yield select()).ledgerServiceReducer;
+    selectedLedger.name = form.name;
+    yield call(axios.put, `${ROOT_URL}${LEDGER_URL_EXT}${selectedLedger._id}`, selectedLedger);
 
     // BEGIN MOCK
     // const response = {
@@ -67,19 +68,20 @@ export function* watchUpdateLedgerRequest(action) {
     // };
     // END MOCK
 
-    yield put(actions.updateLedgerSuccess(response.data, action.successCallback));
+    yield put(actions.getLedgerListRequest());
+    yield put(actions.updateLedgerSuccess());
   } catch (e) {
-    yield put(actions.updateLedgerFailure(e.message, action.errorCallBack));
+    yield put(actions.updateLedgerFailure(e.message));
   }
 }
 
 export function* watchDeleteLedgerRequest(action) {
   try {
-    yield call(axios.delete, `${ROOT_URL}${LEDGER_URL_EXT}${action.ledgerId}`);
-    yield put(actions.getLedgerListRequest());
-    yield put(actions.deleteLedgerSuccess(action.successCallback));
+    const { selectedLedger } = (yield select()).ledgerServiceReducer;
+    yield call(axios.delete, `${ROOT_URL}${LEDGER_URL_EXT}${selectedLedger._id}`);
+    yield put(actions.deleteLedgerSuccess(selectedLedger._id));
   } catch (e) {
-    yield put(actions.deleteLedgerFailure(e.message, action.errorCallBack));
+    yield put(actions.deleteLedgerFailure(e.message));
   }
 }
 
