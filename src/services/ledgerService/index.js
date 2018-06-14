@@ -85,23 +85,9 @@ export function* watchDeleteLedgerRequest(action) {
   }
 }
 
-export function* watchSuccessCallback(action) {
-  if (action.successCallback) {
-    yield call(action.successCallback);
-  }
-}
-
-export function* watchErrorCallback(action) {
-  if (action.errorCallback) {
-    yield call(action.errorCallback);
-  }
-}
-
 export default function* rootSaga() {
   yield takeLatest(actionTypes.LEDGER_LIST_REQUEST, watchGetLedgerListRequest);
   yield takeLatest(actionTypes.LEDGER_CREATE_REQUEST, watchCreateLedgerRequest);
-  yield takeLatest([actionTypes.LEDGER_CREATE_SUCCESS, actionTypes.LEDGER_UPDATE_SUCCESS, actionTypes.LEDGER_DELETE_SUCCESS], watchSuccessCallback);
-  yield takeLatest([actionTypes.LEDGER_CREATE_FAILURE, actionTypes.LEDGER_UPDATE_FAILURE, actionTypes.LEDGER_DELETE_FAILURE], watchErrorCallback);
   yield takeLatest(actionTypes.LEDGER_UPDATE_REQUEST, watchUpdateLedgerRequest);
   yield takeLatest(actionTypes.LEDGER_DELETE_REQUEST, watchDeleteLedgerRequest);
 }
