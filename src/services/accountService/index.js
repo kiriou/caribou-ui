@@ -1,6 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
 import axios from 'axios';
+import sortBy from 'lodash/sortBy';
 
 import * as actionTypes from './actionTypes';
 import { ROOT_URL, ACCOUNT_URL_EXT } from '../../core/api';
@@ -13,24 +14,39 @@ export function* watchGetAccountListRequest() {
 
     // BEGIN MOCK
     const response = {
-      data: [
-        {
-          _id: '1234',
-          lastname: 'Doe',
-          firstname: 'John',
-          email: 'john.doe@test.com',
-        },
-        {
-          _id: '5678',
-          lastname: 'Dupont',
-          firstname: 'Martin',
-          email: 'martin.dupont@test.com',
-        },
-      ],
+      data: {
+        data: [
+          {
+            _id: '1234',
+            lastname: 'Doe',
+            firstname: 'John',
+            email: 'john.doe@test.com',
+          },
+          {
+            _id: '5678',
+            lastname: 'Dupont',
+            firstname: 'Martin',
+            email: 'martin.dupont@test.com',
+          },
+          {
+            _id: '9101',
+            lastname: 'Barette',
+            firstname: 'Julie',
+            email: 'julie.barette@test.com',
+          },
+        ],
+      },
     };
     // END MOCK
-
-    yield put(actions.getAccountListSuccess(response.data));
+    const accountsByLetterMap = {};
+    const sortedList = sortBy(response.data.data, ['firstname', 'lastname']);
+    sortedList.forEach(account => {
+      if(!accountsByLetterMap[account.firstname.charAt(0)]){
+        accountsByLetterMap[account.firstname.charAt(0)] = [];
+      }
+      accountsByLetterMap[account.firstname.charAt(0)].push(account);
+    });
+    yield put(actions.getAccountListSuccess(accountsByLetterMap));
   } catch (e) {
     yield put(actions.getAccountListFailure(e.message));
   }
@@ -39,7 +55,7 @@ export function* watchGetAccountListRequest() {
 export function* watchCreateAccountRequest(action) {
   try {
     const account = action.newAccount;
-    const response = yield call(axios.post, `${ROOT_URL}${ACCOUNT_URL_EXT}`, account);
+    yield call(axios.post, `${ROOT_URL}${ACCOUNT_URL_EXT}`, account);
 
     // BEGIN MOCK
     // const response = {
@@ -52,10 +68,10 @@ export function* watchCreateAccountRequest(action) {
     // };
     // END MOCK
 
-    yield put(actions.createAccountSuccess(response.data, action.successCallback));
+    yield put(actions.createAccountSuccess());
     yield put(push('/accounts'));
   } catch (e) {
-    yield put(actions.createAccountFailure(e.message, action.errorCallBack));
+    yield put(actions.createAccountFailure(e.message));
   }
 }
 
@@ -70,9 +86,9 @@ export function* watchUpdateAccountRequest(action) {
     // };
     // END MOCK
 
-    yield put(actions.updateAccountSuccess(response.data, action.successCallback));
+    yield put(actions.updateAccountSuccess(response.data));
   } catch (e) {
-    yield put(actions.updateAccountFailure(e.message, action.errorCallBack));
+    yield put(actions.updateAccountFailure(e.message));
   }
 }
 
@@ -82,19 +98,7 @@ export function* watchDeleteAccountRequest(action) {
     yield put(actions.getAccountListRequest());
     yield put(actions.deleteAccountSuccess(action.successCallback));
   } catch (e) {
-    yield put(actions.deleteAccountFailure(e.message, action.errorCallBack));
-  }
-}
-
-export function* watchSuccessCallback(action) {
-  if (action.successCallback) {
-    yield call(action.successCallback);
-  }
-}
-
-export function* watchErrorCallback(action) {
-  if (action.errorCallback) {
-    yield call(action.errorCallback);
+    yield put(actions.deleteAccountFailure(e.message));
   }
 }
 
@@ -107,8 +111,6 @@ export function* watchInitAccount() {
 export default function* rootSaga() {
   yield takeLatest(actionTypes.ACCOUNT_LIST_REQUEST, watchGetAccountListRequest);
   yield takeLatest(actionTypes.ACCOUNT_CREATE_REQUEST, watchCreateAccountRequest);
-  yield takeLatest([actionTypes.ACCOUNT_CREATE_SUCCESS, actionTypes.ACCOUNT_UPDATE_SUCCESS, actionTypes.ACCOUNT_DELETE_SUCCESS], watchSuccessCallback);
-  yield takeLatest([actionTypes.ACCOUNT_CREATE_FAILURE, actionTypes.ACCOUNT_UPDATE_FAILURE, actionTypes.ACCOUNT_DELETE_FAILURE], watchErrorCallback);
   yield takeLatest(actionTypes.ACCOUNT_UPDATE_REQUEST, watchUpdateAccountRequest);
   yield takeLatest(actionTypes.ACCOUNT_DELETE_REQUEST, watchDeleteAccountRequest);
   yield takeLatest(actionTypes.ACCOUNT_INIT, watchInitAccount);

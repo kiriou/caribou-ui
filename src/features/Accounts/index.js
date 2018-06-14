@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { getAccountListRequest, selectAccount, deleteAccountRequest, initAccount } from '../../services/accountService/actions';
+import { getAccountListRequest } from '../../services/accountService/actions';
 import Accounts from './accounts';
 
 function mapStateToProps(state) {
@@ -10,4 +10,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps, { getAccountListRequest, selectAccount, deleteAccountRequest, initAccount })(Accounts);
+export default connect(mapStateToProps, { getAccountListRequest })(Accounts);

@@ -1,7 +1,7 @@
 import * as actionTypes from './actionTypes';
 
 export const initialState = () => ({
-  all: [],
+  all: {},
   selectedAccount: {},
   failure: false,
 });
@@ -19,7 +19,7 @@ export default (state = initialState(), action) => {
     case actionTypes.ACCOUNT_LIST_FAILURE:
       return {
         ...state,
-        all: [],
+        all: {},
         failure: true,
       };
 
@@ -38,6 +38,7 @@ export default (state = initialState(), action) => {
       };
 
     case actionTypes.ACCOUNT_UPDATE_FAILURE:
+    case actionTypes.ACCOUNT_DELETE_FAILURE:
       return {
         ...state,
         failure: true,
@@ -47,12 +48,6 @@ export default (state = initialState(), action) => {
       return {
         ...state,
         failure: false,
-      };
-
-    case actionTypes.ACCOUNT_DELETE_FAILURE:
-      return {
-        ...state,
-        failure: true,
       };
 
     default:

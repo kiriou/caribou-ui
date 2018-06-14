@@ -2,7 +2,6 @@ import { put, takeLatest, select } from 'redux-saga/effects';
 
 import * as actionTypes from './actionTypes';
 import * as actions from './actions';
-import { updateUser } from '../userService/actions';
 
 import { validateFields, validateForm } from './helper';
 import { createLedgerRequest, updateLedgerRequest } from '../ledgerService/actions';
