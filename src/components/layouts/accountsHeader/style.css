@@ -1,0 +1,7 @@
+.accounts-header {
+  display: flex;
+}
+
+.accounts__button-add {
+  margin-left: 1rem;
+}

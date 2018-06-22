@@ -6,7 +6,6 @@ import sortBy from 'lodash/sortBy';
 import * as actionTypes from './actionTypes';
 import { ROOT_URL, ACCOUNT_URL_EXT } from '../../core/api';
 import * as actions from './actions';
-import { initAccount } from './helper';
 
 export function* watchGetAccountListRequest() {
   try {
@@ -102,16 +101,9 @@ export function* watchDeleteAccountRequest(action) {
   }
 }
 
-export function* watchInitAccount() {
-  const account = initAccount();
-
-  yield put(actions.initAccountDone(account));
-}
-
 export default function* rootSaga() {
   yield takeLatest(actionTypes.ACCOUNT_LIST_REQUEST, watchGetAccountListRequest);
   yield takeLatest(actionTypes.ACCOUNT_CREATE_REQUEST, watchCreateAccountRequest);
   yield takeLatest(actionTypes.ACCOUNT_UPDATE_REQUEST, watchUpdateAccountRequest);
   yield takeLatest(actionTypes.ACCOUNT_DELETE_REQUEST, watchDeleteAccountRequest);
-  yield takeLatest(actionTypes.ACCOUNT_INIT, watchInitAccount);
 }

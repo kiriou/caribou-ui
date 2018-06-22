@@ -2,21 +2,25 @@ import * as actionTypes from './actionTypes';
 
 export const initialState = () => ({
   form: {
-    name: '',
+    lastname: '',
+    firstname: '',
+    email: '',
   },
   formErrors: {
-    name: '',
+    lastname: '',
+    firstname: '',
+    email: '',
   },
 });
 
 export default (state = initialState(), action) => {
   switch (action.type) {
-    case actionTypes.LEDGER_FORM_INIT_FORM_DONE:
+    case actionTypes.ACCOUNT_FORM_INIT_FORM_DONE:
       return {
         ...state,
         form: action.form,
       };
-    case actionTypes.LEDGER_FORM_UPDATE_DONE:
+    case actionTypes.ACCOUNT_FORM_UPDATE_DONE:
       return {
         ...state,
         form: {

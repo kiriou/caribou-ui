@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import AccountList from '../../components/layouts/accountList/index';
+import AccountsHeader from '../../components/layouts/accountsHeader/index';
 
 import './style.css';
 
@@ -18,9 +19,7 @@ class Accounts extends Component {
   render() {
     return (
       <div>
-        <div>
-          <h3>Liste des comptes</h3>
-        </div>
+        <AccountsHeader />
         <div className="accounts-content">
           <AccountList accounts={this.props.accounts}/>
         </div>

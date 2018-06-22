@@ -89,15 +89,8 @@ export function selectAccount(account) {
   };
 }
 
-export function initAccount() {
+export function addAccount() {
   return {
-    type: actionTypes.ACCOUNT_INIT,
-  };
-}
-
-export function initAccountDone(account) {
-  return {
-    type: actionTypes.ACCOUNT_INIT_DONE,
-    account,
+    type: actionTypes.ACCOUNT_SWITCH_CREATION,
   };
 }

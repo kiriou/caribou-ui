@@ -4,6 +4,7 @@ export const initialState = () => ({
   all: {},
   selectedAccount: {},
   failure: false,
+  isCreation: false,
 });
 
 export default (state = initialState(), action) => {
@@ -24,10 +25,15 @@ export default (state = initialState(), action) => {
       };
 
     case actionTypes.ACCOUNT_SELECT:
-    case actionTypes.ACCOUNT_INIT_DONE:
       return {
         ...state,
         selectedAccount: action.account,
+      };
+
+    case actionTypes.ACCOUNT_SWITCH_CREATION:
+      return {
+        ...state,
+        isCreation: true,
       };
 
     case actionTypes.ACCOUNT_UPDATE_SUCCESS:

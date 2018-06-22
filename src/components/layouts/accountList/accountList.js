@@ -12,12 +12,21 @@ import './style.css';
 
 const propTypes = {
   accounts: PropTypes.object.isRequired,
+
+  selectAccount: PropTypes.func.isRequired,
+  initForm: PropTypes.func.isRequired,
 };
 
 const defaultProps = {};
 
 const AccountList = (props) => {
   const { accounts } = props;
+  const { selectAccount, initForm } = props;
+
+  const editAccount = (account) => {
+    selectAccount(account);
+    initForm(account);
+  };
 
   const renderAccountItem = (account, isFirst, letter) => {
     if (isFirst) {
@@ -26,6 +35,7 @@ const AccountList = (props) => {
           key={account._id}
           primaryText={`${account.firstname} ${account.lastname}`}
           insetChildren={true}
+          onClick={() => editAccount(account)}
           leftAvatar={
             <Avatar color={cyan400} backgroundColor={transparent}>{letter}</Avatar>}
         />
@@ -36,6 +46,7 @@ const AccountList = (props) => {
         key={account._id}
         primaryText={`${account.firstname} ${account.lastname}`}
         insetChildren={true}
+        onClick={() => editAccount(account)}
       />
     );
   };

@@ -18,9 +18,8 @@ export const ACCOUNT_DELETE_REQUEST = 'ACCOUNT_DELETE_REQUEST';
 export const ACCOUNT_DELETE_SUCCESS = 'ACCOUNT_DELETE_SUCCESS';
 export const ACCOUNT_DELETE_FAILURE = 'ACCOUNT_DELETE_FAILURE';
 
+// Switch to create.
+export const ACCOUNT_SWITCH_CREATION = 'ACCOUNT_SWITCH_CREATION';
+
 // Select an account.
 export const ACCOUNT_SELECT = 'ACCOUNT_SELECT';
-
-// Init an account.
-export const ACCOUNT_INIT = 'ACCOUNT_INIT';
-export const ACCOUNT_INIT_DONE = 'ACCOUNT_INIT_DONE';
